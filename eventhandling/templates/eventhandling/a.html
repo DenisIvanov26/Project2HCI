@@ -63,8 +63,30 @@
 
 <script type="text/javascript">
 
-	// your solution here
+$( ".p2-circle.bg-purple" ).click(function() {
+    $(".p2-circle.bg-purple").hide();
+  });
 
+  $( ".p2-circle.bg-green" ).click(function() {
+    $(".p2-circle.bg-green").hide();
+    $(".p2-circle.bg-blue").hide();
+  });
+
+  $( ".p2-circle.bg-orange.p2-border" ).click(function() {
+    $(".p2-circle.bg-orange.p2-border").hide();
+  });
+
+  $( ".p2-circle#gradient-circle").hover(function() {
+    $(".p2-circle#gradient-circle").hide();
+  });
+
+  $(".btn.btn-light.float-right").click(function(){
+    $(".p2-circle.bg-orange.p2-border").show();
+    $(".p2-circle.bg-green").show();
+    $(".p2-circle.bg-blue").show();
+    $(".p2-circle.bg-purple").show();
+    $(".p2-circle#gradient-circle").show();
+  });
 </script>
 </body>
 </html>

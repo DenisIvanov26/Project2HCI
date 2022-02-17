@@ -84,7 +84,30 @@
 	</div>
 	<script>
     
-	  // your solution here
+    
+    $(".large-box>.small-box#tap-box").hammer().bind("tap", function(){
+      $(".large-box>.small-box#tap-box").hide()
+    });
+
+    $(".large-box>.small-box#rotate-box").hammer(({ recognizers: [[Hammer.Rotate, { enable: true }]]})).bind("rotate", function(){
+      $(".large-box>.small-box#rotate-box").hide()
+    });
+
+    $(".large-box>.small-box#swipe-box").hammer().bind("swipe", function(){
+      $(".large-box>.small-box#swipe-box").hide()
+    });
+
+    $(".large-box>.small-box#press-box").hammer().bind("press", function(){
+      $(".large-box>.small-box#press-box").hide()
+    });
+
+    $(".large-box>.small-box#pan-box").hammer().bind("pan", function(){
+      $(".large-box>.small-box#pan-box").hide()
+    });
+
+    $(".large-box>.small-box#pinch-box").hammer(({ recognizers: [[Hammer.Pinch, { enable: true }]]})).bind("pinch", function(){
+      $(".large-box>.small-box#pinch-box").hide()
+    });
 
   </script>
 </body>

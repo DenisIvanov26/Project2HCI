@@ -38,8 +38,16 @@
 
 
 <script type="text/javascript">
+var stop = false;
+$(".btn").click(function() {
+  stop = true
+} )
+setInterval(function() {
+  if (!stop)
+  $(".shape-container").append("<div class='p2-circle bg-blue'></div>")
+  }, 1000); 
 
-	// your solution here
+
 
 </script>
 </body>
