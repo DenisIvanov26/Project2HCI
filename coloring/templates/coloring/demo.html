@@ -114,8 +114,60 @@
 
 			// Set up the mandala interactivity.
       
+
+
+
+      function myGradientInteraction(){
+        with (paper) {
+              var path = new Path();
+              var point = new Point(500, 300);
+              var size = new Size(400, 250);
+              var path = new Path.Rectangle(point, size);
+              var tool = new Tool();
+              var first;
+              path.fillColor = {
+                gradient: {
+                  stops: ['green', 0.2, 'red',0.2, 'blue',0.2],
+                },
+                origin: path.point,
+                destination: path.bounds.rightCenter
+              };
+    // Fill the path with a gradient of three color stops
+    // that runs between the two points we defined earlier:
+
+          // your code here (e.g., you may draw the rectangle here)
+
+          tool.onMouseDown = function (event) {
+            var hit = mandala.item.hitTest(event.point, { tolerance: 10, fill: true });
+                    if (hit) {
+                            // Color pallette keeps track of the full history of colors, though we
+                            // only color in with the most-recent color.
+                        hit.item.fillColor = cp.history[cp.history.length - 1];
+                    }
+            first = event.point
+          }
+
+          tool.onMouseUp = function (event) {
+              var path = new Path();
+              var second = event.point
+              var point = new Point(500, 300);
+              var size = new Size(400, 250);
+              var path = new Path.Rectangle(point, size);
+              var tool = new Tool();
+              path.fillColor = {
+                gradient: {
+                  stops: [cp.history[cp.history.length - 1], cp.history[cp.history.length - 2]],
+                },
+                origin: first,
+                destination: second
+              };
+
+            // your code here
+         }
+      }
+    }
       // set to false once you've defined "myGradientInteraction" as a new function (following a similar setup as myCustomInteraction)
-			init(true);
+			init(false);
 		}
 	</script>
 </head>
