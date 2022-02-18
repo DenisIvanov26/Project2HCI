@@ -120,16 +120,16 @@
       function myGradientInteraction(){
         with (paper) {
               var path = new Path();
-              var point = new Point(500, 300);
+              var point = new Point(400, 200);
               var size = new Size(400, 250);
               var path = new Path.Rectangle(point, size);
               var tool = new Tool();
               var first;
               path.fillColor = {
                 gradient: {
-                  stops: ['green', 0.2, 'red',0.2, 'blue',0.2],
+                  stops: ['green','red', 'black'],
                 },
-                origin: path.point,
+                origin: path.bounds.leftCenter,
                 destination: path.bounds.rightCenter
               };
     // Fill the path with a gradient of three color stops
@@ -150,7 +150,7 @@
           tool.onMouseUp = function (event) {
               var path = new Path();
               var second = event.point
-              var point = new Point(500, 300);
+              var point = new Point(400, 200);
               var size = new Size(400, 250);
               var path = new Path.Rectangle(point, size);
               var tool = new Tool();
