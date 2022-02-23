@@ -61,10 +61,32 @@
 				tool.onMouseDown = function (event) {
 				    var hit = mandala.item.hitTest(event.point, { tolerance: 10, fill: true });
 				    if (hit) {
+				        hit.item.fillColor = cp.history[cp.history.length - 1];
 				    		// Color pallette keeps track of the full history of colors, though we
 				    		// only color in with the most-recent color.
-				        hit.item.fillColor = cp.history[cp.history.length - 1];
-				    }
+                }             
+				    } 
+        mandala.item.onDoubleClick = function (event) {
+            with (paper) {
+            var point = event.point
+            var size = new Size(150, 150);
+            sq = new Path.Rectangle(point, size);
+            sq.fillColor = {
+              gradient: {
+                  stops: ['black',[cp.history[cp.history.length - 1],0.5], "white"],
+                },
+              origin: point,
+              destination: sq.bounds.bottomRight
+            };
+            }
+          sq.onClick = function(event){
+          var copy1 = sq.rasterize();
+          var hit = copy1.hitTest(event.point);
+          //sq.fillColor = new Color(hit.color.red, hit.color.green, hit.color.blue);
+          sq.fillColor=hit.color;
+          copy1.remove();
+          cp.history.push(hit.color);
+        }
 				}
 			}
 
